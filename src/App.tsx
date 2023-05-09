@@ -20,7 +20,9 @@ export default function App() {
 
   useEffect(() => {
     async () => {
-      await navigator.mediaDevices.getUserMedia();
+      await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
 
       const options = await navigator.mediaDevices.enumerateDevices();
 
