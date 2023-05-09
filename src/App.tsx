@@ -19,13 +19,17 @@ export default function App() {
   };
 
   useEffect(() => {
-    navigator.mediaDevices.enumerateDevices().then((options) => {
+    async () => {
+      await navigator.mediaDevices.getUserMedia();
+
+      const options = await navigator.mediaDevices.enumerateDevices();
+
       setOptions(
         options
           .filter((item) => item.kind == "videoinput")
           .map((item) => [item.deviceId, item.label])
       );
-    });
+    };
   }, []);
 
   useEffect(() => {
